@@ -1,0 +1,19 @@
+{
+  "name": "max-ai",
+  "version": "1.0.0",
+  "description": "MAX AI - Premium AI Chat Assistant powered by ChatGPT & Gemini",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "node-fetch": "^2.7.0"
+  },
+  "keywords": ["ai", "chatgpt", "gemini", "chatbot"],
+  "author": "Max",
+  "license": "MIT"
+}
