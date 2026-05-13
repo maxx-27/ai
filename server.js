@@ -237,19 +237,24 @@ app.get('*', (req, res) => {
 });
 
 // ============================================
-// Start Server
+// Start Server (hanya jalan di lokal, bukan Vercel)
 // ============================================
-app.listen(PORT, () => {
-    console.log('');
-    console.log('╔═══════════════════════════════════════════╗');
-    console.log('║         🤖 Max AI Server v2.0             ║');
-    console.log('╠═══════════════════════════════════════════╣');
-    console.log(`║  🌐 http://localhost:${PORT}                  ║`);
-    console.log('╠═══════════════════════════════════════════╣');
-    console.log(`║  OpenAI : ${OPENAI_API_KEY && OPENAI_API_KEY !== 'sk-your-openai-api-key-here' ? '✅ OK' : '❌ Not set'}                       ║`);
-    console.log(`║  Gemini : ${GEMINI_API_KEY && GEMINI_API_KEY !== 'your-gemini-api-key-here' ? '✅ OK' : '❌ Not set'}                       ║`);
-    console.log('╠═══════════════════════════════════════════╣');
-    console.log('║  Modes: Creative | Precise | Fast         ║');
-    console.log('╚═══════════════════════════════════════════╝');
-    console.log('');
-});
+if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log('');
+        console.log('╔═══════════════════════════════════════════╗');
+        console.log('║         🤖 Max AI Server v2.0             ║');
+        console.log('╠═══════════════════════════════════════════╣');
+        console.log(`║  🌐 http://localhost:${PORT}                  ║`);
+        console.log('╠═══════════════════════════════════════════╣');
+        console.log(`║  OpenAI : ${OPENAI_API_KEY && OPENAI_API_KEY !== 'sk-your-openai-api-key-here' ? '✅ OK' : '❌ Not set'}                       ║`);
+        console.log(`║  Gemini : ${GEMINI_API_KEY && GEMINI_API_KEY !== 'your-gemini-api-key-here' ? '✅ OK' : '❌ Not set'}                       ║`);
+        console.log('╠═══════════════════════════════════════════╣');
+        console.log('║  Modes: Creative | Precise | Fast         ║');
+        console.log('╚═══════════════════════════════════════════╝');
+        console.log('');
+    });
+}
+
+// Export untuk Vercel Serverless
+module.exports = app;
